@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Désert Aventures Maroc - Quad, Chameaux, Dîner-Spectacle</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f4a261" width="1200" height="600"/><path fill="%23e76f51" d="M0 400Q300 200 600 400T1200 400V600H0z"/><circle fill="%23f8f9fa" cx="400" cy="250" r="80"/><circle fill="%23f8f9fa" cx="800" cy="280" r="60"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #e76f51;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #f4a261;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.9);
+            padding: 1rem 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav li {
+            margin: 0 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #f4a261;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #264653;
+        }
+
+        /* Activités */
+        .activities {
+            background: #f8f9fa;
+        }
+
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .activity-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .activity-icon {
+            font-size: 4rem;
+            color: #e76f51;
+            margin-bottom: 1rem;
+        }
+
+        /* Tarifs */
+        .pricing {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .price-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #f4a261;
+            margin: 1rem 0;
+        }
+
+        /* Contact */
+        .contact {
+            background: #264653;
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1d3557;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+        }
+
+        /* Scroll effect */
+        nav.scrolled {
+            background: rgba(0,0,0,1);
+            padding: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#activites">Activités</a></li>
+            <li><a href="#tarifs">Tarifs</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="accueil">
+        <div class="hero-content">
+            <h1><i class="fas fa-mountain"></i> Désert Aventures Maroc</h1>
+            <p>Quad, Chameaux, Dîner-Spectacle & Transport</p>
+            <a href="#contact" class="cta-button">Réserver Maintenant</a>
+        </div>
+    </header>
+
+    <!-- Activités -->
+    <section id="activites" class="activities">
+        <div class="container">
+            <h2>Nos Activités Inoubliables</h2>
+            <div class="activity-grid">
+                <div class="activity-card">
+                    <div class="activity-icon">
+                        <i class="fas fa-motorcycle"></i>
+                    </div>
+                    <h3>Quad dans le Désert</h3>
+                    <p>Parcourez les dunes dorées à bord de quads puissants. Sensations garanties !</p>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">
+                        <i class="fas fa-camel"></i>
+                    </div>
+                    <h3>Balade à Chameau</h3>
+                    <p>Découvrez le désert à dos de chameau au coucher du soleil magique.</p>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Dîner-Spectacle</h3>
+                    <p>Dîner traditionnel marocain avec spectacle folklorique enchanteresse.</p>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-icon">
+                        <i class="fas fa-shuttle-van"></i>
+                    </div>
+                    <h3>Transport Inclus</h3>
+                    <p>Navette confortable depuis votre hôtel vers le désert.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tarifs -->
+    <section id="tarifs" class="pricing">
+        <div class="container">
+            <h2>Nos Forfaits</h2>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>Quad Découverte</h3>
+                    <div class="price">500 DH</div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>1h de quad</li>
+                        <li>Transport aller-retour</li>
+                        <li>Guide expérimenté</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Réserver</a>
+                </div>
+                <div class="price-card">
+                    <h3>Chameau & Dîner</h3>
+                    <div class="price">800 DH</div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>Balade chameau 1h</li>
+                        <li>Dîner spectacle</li>
+                        <li>Transport inclus</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Réserver</a>
+                </div>
+                <div class="price-card">
+                    <h3>Pack Complet</h3>
+                    <div class="price">1200 DH</div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>Quad + Chameau</li>
+                        <li>Dîner spectacle premium</li>
+                        <li>Photos souvenirs</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Réserver</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Réservez Votre Aventure</h2>
+            <div class="contact-grid">
+                <div>
+                    <h3><i class="fas fa-phone"></i> Contact Rapide</h3>
+                    <p><strong>Téléphone:</strong> +212 6 XX XX XX XX</p>
+                    <p><strong>WhatsApp:</strong> +212 6 XX XX XX XX</p>
+                    <p><strong>Email:</strong> contact@desertaventures.ma</p>
+                    <p><strong>Horaires:</strong> 8h-22h tous les jours</p>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Votre nom" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Votre téléphone" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Votre email">
+                    </div>
+                    <div class="form-group">
+                        <select style="width:100%; padding:15px; border-radius:10px; border:none;">
+                            <option>Choisir un forfait</option>
+                            <option>Quad Découverte (500 DH)</option>
+                            <option>Chameau & Dîner (800 DH)</option>
+                            <option>Pack Complet (1200 DH)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" placeholder="Message ou date souhaitée"></textarea>
+                    </div>
+                    <button type="submit" class="cta-button" style="width:100%;">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Désert Aventures Maroc. Tous droits réservés. | Marrakech - Merzouga</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre réservation ! Nous vous contactons sous 24h.');
+        });
+    </script>
+</body>
+</html>
